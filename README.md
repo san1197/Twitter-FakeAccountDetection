@@ -12,11 +12,11 @@
 ## A glimpse of running the model
 **Output Window**
 
-![Images](/images/1.png)
+![Images](/images/1.PNG)
 
 **Custom User Account**
 
-![Images](/images/3.png)
+![Images](/images/3.PNG)
 
 **Sample Classifier accuracy**
 
