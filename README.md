@@ -1,2 +1,2 @@
-# Twitter-FakeAccountDetection
-A machine learning model to detect fake accounts on Twitter with comparisons among each of them.
+# Fake account detection in Twitter
+![](/images/1.png)
