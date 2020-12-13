@@ -1,6 +1,6 @@
 # Fake account detection in Twitter
 
-## Features:
+## Features
 - Uses machine learning algorithms to classify user accounts into real or fake.
 - Classifiers implemented are:
 	- Naive Bayes
