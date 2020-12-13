@@ -10,10 +10,22 @@
 - Displays comparison results of each classifier using bar graph.
 
 ## A glimpse of running the model
-![Images](/images/1.PNG)
-![Images](/images/2.PNG)
-![Images](/images/4.PNG)
-![Images](/images/3.PNG)
+**Output Window**
+
+![Images](/images/1.png)
+
+**Custom User Account**
+
+![Images](/images/3.png)
+
+**Sample Classifier accuracy**
+
+![Images](/images/2.png)
+
+**Classifier comparison**
+
+![Images](/images/4.png)
+
 
 ## How to run?
 - Install required libraries using
