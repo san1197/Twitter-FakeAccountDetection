@@ -1,2 +1,2 @@
 # Fake account detection in Twitter
-![](/images/1.png)
+![Images](/images/1.png)
