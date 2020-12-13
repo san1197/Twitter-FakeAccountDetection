@@ -1,38 +1,34 @@
 import tkinter as tk
 from tkinter import Tk
 from tkinter import filedialog
-import matplotlib.figure
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import pandas as pd 
 import numpy as np
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
+import matplotlib.figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, classification_report, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 from tkinter import ttk
 from tkinter.filedialog import askopenfilename
-
 from collections import OrderedDict
 
 filename=None
 ErrorrateMeans=list()
 AccuracyMeans=list()
 
-
-
 def browse() :
-	Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
+	Tk().withdraw()
 	global filename
-	filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
+	filename = askopenfilename()
 	print (filename)
 	
-
-		 
+	 
 def Create_Input_Window():    
 	input_window = tk.Toplevel(root)
-	input_window.geometry("400x500") #You want the size of the app to be 500x500
+	input_window.geometry("400x500")
 	input_window.resizable(0, 0)
 	
 	def retrieve_input():
@@ -86,9 +82,6 @@ def Create_Input_Window():
 			msk = np.random.rand(len(df)) < 0.7
 			train = df[msk]
 			test = inputframe
-			#print(train)
-			#print(len(test))
-			#print (test)
 			testing_data=test.values[:, 0:7]
 			features = train.values[:, 0:7]
 			labels   = train.values[:, 8].astype('int')
@@ -126,9 +119,6 @@ def Create_Input_Window():
 			msk = np.random.rand(len(df)) < 0.7
 			train = df[msk]
 			test = inputframe
-			#print(train)
-			#print(len(test))
-			#print (test)
 			testing_data=test.values[:, 0:7]
 			features = train.values[:, 0:7]
 			labels   = train.values[:, 8].astype('int')
@@ -165,9 +155,6 @@ def Create_Input_Window():
 			msk = np.random.rand(len(df)) < 0.7
 			train = df[msk]
 			test = inputframe
-			#print(train)
-			#print(len(test))
-			#print (test)
 			testing_data=test.values[:, 0:7]
 			features = train.values[:, 0:7]
 			labels   = train.values[:, 8].astype('int')
@@ -261,9 +248,6 @@ def Naive_Bayes():
 		msk = np.random.rand(len(df)) < 0.7
 		train = df[msk]
 		test = df[~msk]
-		#print(train)
-		#print(len(test))
-		#print (test)
 		testing_data=test.values[:, 0:7]
 		testing_data_labels=test.values[:, 8]
 		features = train.values[:, 0:7]
@@ -289,12 +273,10 @@ def Naive_Bayes():
 
 		labels = ['Error Rate', 'Accuracy ']
 		sizes = [error_rate,accuracy]
-		# only "explode" the 2nd slice (i.e. 'Accuracy')
 		explode = (0, 0.1)  
 		fig1, ax1 = plt.subplots()
 		ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
 				shadow=True, startangle=90) 
-		# Equal aspect ratio ensures that pie is drawn as a circle
 		plt.title('Naive Bayes Algorithm')
 		ax1.axis('equal')  
 		plt.tight_layout()
@@ -311,7 +293,6 @@ def Linear_Svc():
 		testing_data_labels=test.values[:, 8]
 		features = train.values[:, 0:7]
 		labels   = train.values[:, 8].astype('int')
-		# fitting the data onto the classifier
 		model2 = LinearSVC()
 		model2.fit(features,labels)
 		predictions_model2 = model2.predict(testing_data)
@@ -333,12 +314,11 @@ def Linear_Svc():
 
 		labels = ['Error Rate', 'Accuracy ']
 		sizes = [error_rate,accuracy]
-		# only "explode" the 2nd slice (i.e. 'Accuracy')
 		explode = (0, 0.1)  
 		fig1, ax1 = plt.subplots()
 		ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
 				shadow=True, startangle=90) 
-		# Equal aspect ratio ensures that pie is drawn as a circle
+
 		plt.title('Linear SVC Algorithm')
 		ax1.axis('equal')  
 		plt.tight_layout()
@@ -356,7 +336,7 @@ def Knn():
 		testing_data_labels=test.values[:, 8]
 		features = train.values[:, 0:7]
 		labels   = train.values[:, 8].astype('int')
-		# fitting the data onto the classifier
+
 		model3 = KNeighborsClassifier(n_neighbors=3)
 		model3.fit(features,labels)
 		predictions_model3 = model3.predict(testing_data)
@@ -378,12 +358,12 @@ def Knn():
 
 		labels = ['Error Rate', 'Accuracy ']
 		sizes = [error_rate,accuracy]
-		# only "explode" the 2nd slice (i.e. 'Accuracy')
+
 		explode = (0, 0.1)  
 		fig1, ax1 = plt.subplots()
 		ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
 				shadow=True, startangle=90) 
-		# Equal aspect ratio ensures that pie is drawn as a circle
+
 		plt.title('KNN Algorithm')
 		ax1.axis('equal')  
 		plt.tight_layout()
@@ -394,8 +374,8 @@ def Knn():
 def compare():
 	
 	N = 3
-	ind = np.arange(N)    # the x locations for the groups
-	width = 0.35       # the width of the bars: can also be len(x) sequence
+	ind = np.arange(N)
+	width = 0.35
 	p1 = plt.bar(ind, AccuracyMeans, width )
 	p2 = plt.bar(ind, ErrorrateMeans, width,bottom=AccuracyMeans )
 	plt.ylabel('Scores')
@@ -406,11 +386,10 @@ def compare():
 	plt.show()
 
 
-#GUI Code
 root = tk.Tk()
 root.title("Twitter Fake Account Detector")
 root.grid_columnconfigure(0, weight=1)
-root.geometry("600x500") #You want the size of the app to be 500x500
+root.geometry("600x500")
 root.resizable(0, 0)
 
 tk.Label(root, 
